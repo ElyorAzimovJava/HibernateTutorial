@@ -1,19 +1,28 @@
 package entities;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     private String firstName;
     private String lastName;
     private String username;
     private LocalDate birthDate;
 
-    public User(String firstName, String lastName, String username, LocalDate birthDate) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.birthDate = birthDate;
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public User() {
